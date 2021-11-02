@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 
 class Cross extends Component {
+    SwitchLoat = () => {
+        window.onload = () => {
+            document.getElementById('trans').classList.toggle("Active");
+        }
+    }
+    
     render() {
+        this.SwitchLoat();
         return (
             <section className="ActField Crossroad">
                 <div className="Request">
-                Choose the way
+                Crossroads
                 </div>
-                <div className="Way" ></div>
-                <div className="Way" ></div>
+                <div className="Way" onClick={() => {global.SceneHandleClick(); this.SwitchLoat();}}></div>
+                <div className="Way" onClick={global.SceneHandleClick}></div>
             </section>
         );
     }
