@@ -36,7 +36,10 @@ class Heroscene extends Component {
 
         this.setState({Kills : tmpP});
         while (tmpL * 5 < tmpP) {
-            this.setState({Lvl : ++tmpL});
+            this.setState({
+                Lvl : ++tmpL,
+                MaxHP : this.state.MaxHP + 3
+            });
             this.handleDmgControl();
         }
     }
@@ -135,7 +138,7 @@ class Heroscene extends Component {
             <section className="ActField Hero">
                     <div className="Bio">
                     <div className="Name">{this.state.Name}</div>
-                    <img id='mgi' src="http://placekitten.com/200/300" alt="avatar"/>
+                    <img id='mgi' src='https://lh3.googleusercontent.com/flLZ0z2tG7Uk5iavguxeVN6rm6zgQnnwrccFfj0VeO_TVfCfkpG8bPoFXl3oIOISV63c=s89' alt="avatar"/>
                 </div>
                 <div className="FightBoard">
                     <div className="PowerSum">
