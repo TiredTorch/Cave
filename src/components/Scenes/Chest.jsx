@@ -5,13 +5,18 @@ class Chest extends Component {
         super(props);
 
         this.state = {
-            point: Math.floor(Math.random() * 8) * 10
+            point: Math.floor(Math.random() * 10) + 1
         }
     }
 
     componentDidMount(){
         this.SwitchLoat();
     }
+
+    componentWillUnmount(){
+        global.RoomRestoreHP();
+    }
+
 
     SwitchLoat = () => {
         window.onload = () => {
@@ -38,7 +43,7 @@ class Chest extends Component {
                         <span className="Value">{this.state.point}</span>
                         <span className="Text"> points</span>
                     </div>
-                    <button onClick={() => {this.SwitchLoat(); this.ShowPopUp(); global.SceneHandleClick();}}>Move next</button>
+                    <button onClick={() => {this.SwitchLoat(); this.ShowPopUp(); global.SceneHandleClick(); global.PointsUp(this.state.point);}}>Move next</button>
                 </div>
             </section>
         );

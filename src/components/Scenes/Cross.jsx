@@ -7,6 +7,11 @@ class Cross extends Component {
         }
     }
     
+    
+    componentWillUnmount(){
+        global.RoomRestoreHP();
+    }
+
     render() {
         this.SwitchLoat();
         return (

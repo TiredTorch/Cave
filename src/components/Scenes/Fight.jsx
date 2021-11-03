@@ -44,8 +44,10 @@ class Fight extends Component {
     componentWillUnmount(){
         console.log(2)
         document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
-        document.getElementsByClassName('AttackButton')[0].innerHTML = "Searching...";;
+        document.getElementsByClassName('AttackButton')[0].innerHTML = "Searching...";
+        global.RoomRestoreHP();
     }
+    
 
     ExitFight = () => {
         document.getElementsByClassName('AttackButton')[0].innerHTML = "Move next";
