@@ -19,7 +19,7 @@ class Cross extends Component {
                 <div className="Request">
                 Crossroads
                 </div>
-                <div className="Way" onClick={() => {global.SceneHandleClick(); this.SwitchLoat();}}></div>
+                <div className="Way" onClick={() => {global.SceneHandleClick()}}></div>
                 <div className="Way" onClick={global.SceneHandleClick}></div>
             </section>
         );

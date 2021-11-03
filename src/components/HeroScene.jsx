@@ -7,20 +7,22 @@ class Heroscene extends Component {
 
         super(props);
         this.state = {
-            Name: name,
-            minDmgHero: 3,
-            maxDmgHero: 7,
+            Name: (name === '' || name === null ? "Unnamed Hero" : name),
+            minDmgHero: 4,
+            maxDmgHero: 5,
             MaxHP: 20,
-            CurrentHp: 10,
+            CurrentHp: 20,
             Lvl: 1,
             Kills: 0
         }
 
         this.handlePointsUp = this.handlePointsUp.bind(this);
         this.handleRoomRestoreHP = this.handleRoomRestoreHP.bind(this);
+        this.StartFight = this.StartFight.bind(this);
 
         global.PointsUp = this.handlePointsUp;
         global.RoomRestoreHP = this.handleRoomRestoreHP;
+        global.Fight = this.StartFight;
     }
 
     componentDidMount(){
@@ -55,7 +57,77 @@ class Heroscene extends Component {
     }
 
     StartFight = () => {
-        document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
+        document.getElementsByClassName('AttackButton')[0].innerHTML = "Attack!";
+    }
+
+    Kick = () => {
+        
+
+        var DMGarr = document.getElementsByClassName("Power");
+        let button = document.getElementsByClassName("AttackButton")[0];
+        button.setAttribute('disabled', true);
+        for (let i = 0; i < 6; i++) {
+            DMGarr[i].innerHTML = '-';
+        }
+
+        var HeroAttacks = new Array(3);
+        for (let i = 3; i < 6; i++) {
+            HeroAttacks[i - 3] = Math.floor(
+                this.state.minDmgHero + Math.random() * 
+                (this.state.maxDmgHero - this.state.minDmgHero + 1)
+            );
+            setTimeout(() => {
+                DMGarr[i].innerHTML = HeroAttacks[i - 3]
+            }, (i - 2) * 500);
+        }
+        var AllHeroDmg = HeroAttacks.reduce((sum, elem) => {return sum + elem});
+        setTimeout(() => {
+            document.getElementById("mgi").style.webkitFilter = "invert(0%)";
+            global.enemyKick();
+        }, 2000)
+
+        setTimeout(() => {
+            button.removeAttribute('disabled')
+            this.CompareDmg(AllHeroDmg, global.enemyDmg())
+            if(global.CheckDeath()){             
+                let button = document.getElementsByClassName("AttackButton")[0];
+                button.setAttribute('disabled', true);
+                button.innerHTML = "Battle ends..";
+                global.PointsUp(Math.floor(Math.random() * 10) + 1);
+                setTimeout(() => {
+                    console.log(333)
+                    
+                    global.SceneHandleClick()
+                }, 1000)
+            }
+        }, 4000)
+    }
+    CompareDmg = (hero, enemy) => {
+        var def = hero - enemy
+        if(def < 0){
+            this.Hurt(def * -1)
+        }else if(def > 0){
+            global.enemyHurt(def)
+        }
+    }
+    Hurt = dmg => {
+        
+        document.getElementById("mgi").style.transition = "all .3s";
+        document.getElementById("mgi").style.webkitFilter = "invert(100%)";
+        this.setState({CurrentHp : this.state.CurrentHp - dmg});
+        if (this.state.CurrentHp <= 0) {
+            this.Death()
+        }
+    }
+    Death = () => {
+        let button = document.getElementsByClassName("AttackButton")[0];
+        button.setAttribute('disabled', true);
+        button.innerHTML = "Restart your page";
+        this.setState({
+            Name: "Dead",
+        })
+        document.getElementById("mgi").style.transition = "all .3s";
+        document.getElementById("mgi").style.webkitFilter = "grayscale(90%)";
     }
 
     render() {
@@ -63,7 +135,7 @@ class Heroscene extends Component {
             <section className="ActField Hero">
                     <div className="Bio">
                     <div className="Name">{this.state.Name}</div>
-                    <img src="http://placekitten.com/200/300" alt="avatar"/>
+                    <img id='mgi' src="http://placekitten.com/200/300" alt="avatar"/>
                 </div>
                 <div className="FightBoard">
                     <div className="PowerSum">
@@ -71,7 +143,7 @@ class Heroscene extends Component {
                         <span className="Power">-</span>
                         <span className="Power">-</span>
                     </div>
-                    <button className="AttackButton" id="fck" onClick={() => global.SceneHandleClick()}>Searching...</button>
+                    <button className="AttackButton" id="fck" onClick={() => this.Kick()}>Searching...</button>
                 </div>
                 <div className="Stats">
                     <div className="StatRow">

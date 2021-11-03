@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Fight from './Scenes/Fight';
 import Cross from './Scenes/Cross';
 import Chest from './Scenes/Chest';
-import TransitionScene from './TransitionScene'
+//import TransitionScene from './TransitionScene'
 
 var Scenes = [<Fight/>, <Cross/>, <Chest/>];
 
@@ -14,11 +14,11 @@ class Scenemanager extends Component {
             index: 1,
             scene: <Cross/>
         }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick = () => {
-        
-        TransitionScene.SwitchLoat();
+        console.log(228)
         var indexTmp = this.state.index;
         while (indexTmp === this.state.index) {
             let chance = Math.floor(Math.random() * 10);
@@ -30,8 +30,10 @@ class Scenemanager extends Component {
                 indexTmp = 0;
             }
             if (this.state.index !== indexTmp) {
+                console.log("dfgdfgfd")
                 this.setState({index: indexTmp})
                 this.setState({scene : Scenes[indexTmp]})
+                return
             }
         }
         
