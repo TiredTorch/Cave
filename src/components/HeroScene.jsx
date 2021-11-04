@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 //import { useState, useEffect } from 'react';
 
-async function lock(){
-    await window.screen.orientation.lock("landscape");
+function lock(){
+    if(document.documentElement.requestFullscreen)
+		document.querySelector("#container").requestFullscreen();
+	else if(document.documentElement.webkitRequestFullScreen)
+		document.querySelector("#container").webkitRequestFullScreen();
+
+	window.screen.orientation.lock("landscape-primary")
+		
 }
 
 class Heroscene extends Component {
