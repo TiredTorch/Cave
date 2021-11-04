@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/Cave/static/css/main.142dd05d.chunk.css",
-    "main.js": "/Cave/static/js/main.79172998.chunk.js",
-    "main.js.map": "/Cave/static/js/main.79172998.chunk.js.map",
+    "main.js": "/Cave/static/js/main.5ab6dbc6.chunk.js",
+    "main.js.map": "/Cave/static/js/main.5ab6dbc6.chunk.js.map",
     "runtime-main.js": "/Cave/static/js/runtime-main.8f08b88d.js",
     "runtime-main.js.map": "/Cave/static/js/runtime-main.8f08b88d.js.map",
-    "static/js/2.70f5291f.chunk.js": "/Cave/static/js/2.70f5291f.chunk.js",
-    "static/js/2.70f5291f.chunk.js.map": "/Cave/static/js/2.70f5291f.chunk.js.map",
+    "static/js/2.ea48177b.chunk.js": "/Cave/static/js/2.ea48177b.chunk.js",
+    "static/js/2.ea48177b.chunk.js.map": "/Cave/static/js/2.ea48177b.chunk.js.map",
     "index.html": "/Cave/index.html",
     "static/css/main.142dd05d.chunk.css.map": "/Cave/static/css/main.142dd05d.chunk.css.map",
-    "static/js/2.70f5291f.chunk.js.LICENSE.txt": "/Cave/static/js/2.70f5291f.chunk.js.LICENSE.txt",
+    "static/js/2.ea48177b.chunk.js.LICENSE.txt": "/Cave/static/js/2.ea48177b.chunk.js.LICENSE.txt",
     "static/media/style.css": "/Cave/static/media/scroll.8434355b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8f08b88d.js",
-    "static/js/2.70f5291f.chunk.js",
+    "static/js/2.ea48177b.chunk.js",
     "static/css/main.142dd05d.chunk.css",
-    "static/js/main.79172998.chunk.js"
+    "static/js/main.5ab6dbc6.chunk.js"
   ]
 }
