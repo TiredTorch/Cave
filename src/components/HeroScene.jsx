@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 //import { useState, useEffect } from 'react';
-
-async function lock(){
-    if(document.documentElement.requestFullscreen.Model)
-		document.querySelector("#container").requestFullscreen();
-	else if(document.documentElement.webkitRequestFullScreen.Model)
-		document.querySelector("#container").webkitRequestFullScreen();
-
-	window.screen.orientation.lock("landscape-primary")
+/* 
+function lock(){
+    if(window.screen.orientation.lock){
+	    window.screen.orientation.lock("landscape")
+    }
+    console.log('fsfds');
 		
 }
-
+ */
 class Heroscene extends Component {
     constructor (props) {
         var name = prompt('Input your hero name:');
@@ -36,7 +34,12 @@ class Heroscene extends Component {
     }
 
     componentDidMount(){
-        lock();
+        window.screen.orientation
+        .lock("portrait")
+        .then(
+            success => console.log(success),
+            failure => console.log(failure)
+        )
         document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
         
     }
