@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 //import { useState, useEffect } from 'react';
 
-function lock(){
-    if(document.documentElement.requestFullscreen)
+async function lock(){
+    if(document.documentElement.requestFullscreen.Model)
 		document.querySelector("#container").requestFullscreen();
-	else if(document.documentElement.webkitRequestFullScreen)
+	else if(document.documentElement.webkitRequestFullScreen.Model)
 		document.querySelector("#container").webkitRequestFullScreen();
 
 	window.screen.orientation.lock("landscape-primary")
