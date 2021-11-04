@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 //import { useState, useEffect } from 'react';
-/* 
-function lock(){
-    if(window.screen.orientation.lock){
-	    window.screen.orientation.lock("landscape")
-    }
-    console.log('fsfds');
-		
-}
- */
+
 class Heroscene extends Component {
     constructor (props) {
+        var w = window.screen.height, h = window.screen.width;
+        if(w > h){
+            alert('rotate your device to landscape mode!');
+            document.getElementById('root').style.display = 'none';
+        }
         var name = prompt('Input your hero name:');
 
         super(props);
@@ -35,12 +32,12 @@ class Heroscene extends Component {
 
     componentDidMount(){
         document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
-        window.screen.orientation
-        .lock("portrait")
+        /* window.screen.orientation
+        .lock("portrait")   
         .then(
             success => document.getElementsByClassName('AttackButton')[0].removeAttribute('disabled'),
             failure => console.log(failure)
-        )
+        ) */
         
     }
 

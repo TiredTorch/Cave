@@ -90,7 +90,6 @@ class Fight extends Component {
 
     ExitFight = () => {
         document.getElementsByClassName('AttackButton')[0].innerHTML = "Move next";
-        //document.getElementsByClassName('AttackButton')[0].onclick = () => {global.SceneHandleClick()};
     }
     SwitchLoat = () => {
         window.onload = () => {
