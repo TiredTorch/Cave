@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 //import { useState, useEffect } from 'react';
 
+async function lock(){
+    await window.screen.orientation.lock("landscape");
+}
+
 class Heroscene extends Component {
     constructor (props) {
         var name = prompt('Input your hero name:');
@@ -26,6 +30,7 @@ class Heroscene extends Component {
     }
 
     componentDidMount(){
+        lock();
         document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
         
     }
