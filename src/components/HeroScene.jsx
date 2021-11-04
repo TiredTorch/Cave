@@ -34,13 +34,13 @@ class Heroscene extends Component {
     }
 
     componentDidMount(){
+        document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
         window.screen.orientation
         .lock("portrait")
         .then(
-            success => console.log(success),
+            success => document.getElementsByClassName('AttackButton')[0].removeAttribute('disabled'),
             failure => console.log(failure)
         )
-        document.getElementsByClassName('AttackButton')[0].setAttribute('disabled', true);
         
     }
 
